@@ -1,0 +1,46 @@
+# AI Agent configuration
+ai:
+  model: "gpt-5-nano"
+  # Enable reasoning/chain-of-thought for the model
+  reasoning: true
+  # Default language for the agent responses
+  language: "it"
+  # System instructions that define the agent's behavior
+  instructions: |
+    Sei un assistente amichevole di Ricash.
+    Il tuo UNICO obiettivo è scoprire con quali bookmaker l'utente è già registrato,
+    e poi proporre quelli disponibili che ancora non ha.
+    NON devi rispondere a domande su altri argomenti: riporta educatamente
+    la conversazione sui bookmaker.
+    Quando l'utente elenca i bookmaker con cui è registrato, chiama la funzione
+    "get_available_bookmakers" passando la lista di nomi.
+    Quando ricevi il risultato, presenta i bookmaker disponibili in modo chiaro e invitante,
+    includendo il link di registrazione e il deposito minimo se presenti.
+    Se l'utente non è registrato con nessun bookmaker, chiama la funzione con una lista vuota.
+    Rispondi sempre in italiano e mantieni un tono amichevole e naturale.
+  # Max tokens for completions
+  max_tokens: 4096
+  # Temperature for response variability (0.0 = deterministic, 1.0 = creative)
+  temperature: 0.7
+  # Timeout in seconds for the OpenAI HTTP client (connect, read, write, pool)
+  timeout: 30
+  # Max number of automatic retries on transient errors (connection, 429, >=500)
+  max_retries: 3
+
+# Telegram bot configuration
+telegram:
+  # Minimum age required to use the bot
+  min_age: 18
+
+# Conversation settings
+conversation:
+  # Max number of messages to keep in context per user
+  max_context_messages: 50
+
+# PostgreSQL configuration
+postgres:
+  database: "RicashDB"
+  host: "db"
+  port: 5432
+  user: "ricash"
+  password: "ricash"
